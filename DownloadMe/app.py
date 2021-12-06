@@ -27,17 +27,11 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-db = sqlite3.connect('downloadme.db')
+db = sqlite3.connect('downloadme.db', check_same_thread=False)
+dbcursor = db.cursor()
 
 with open('schema.sql') as f:
     db.executescript(f.read())
-
-db.close()
-
-
-def get_db_connection():
-    conn = sqlite3.connect('downloadme.db')
-    return conn
 
 
 @app.route("/")
@@ -66,19 +60,16 @@ def login():
         elif not request.form.get("password"):
             return apology("must provide password", 403)
 
-        db = get_db_connection()
-
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
-
-        db.close()
+        dbcursor.execute("SELECT * FROM users WHERE username = ?", (request.form.get("username"),))
+        rows = dbcursor.fetchall()
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        if len(rows) != 1 or not check_password_hash(rows[0][2], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
-        session["user_id"] = rows[0]["id"]
+        session["user_id"] = rows[0][0]
 
         # Redirect user to home page
         return redirect("/")
@@ -124,29 +115,28 @@ def register():
         elif request.form.get("password") != request.form.get("confirmation"):
             return apology("password and confirmation must be equal", 400)
 
-        db = get_db_connection()
-
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username")).fetchall()
+        dbcursor.execute("SELECT * FROM users WHERE username = ?", (request.form.get("username"),))
+        rows = dbcursor.fetchall()
 
         # Ensure username doesn't exist
         if len(rows) != 0:
             return apology("username already exists", 400)
 
-        db.execute("INSERT INTO users (username, hash) VALUES (?, ?)",
-                   request.form.get("username"), generate_password_hash(request.form.get("password"))).fetchall()
+        dbcursor.execute("INSERT INTO users (username, hash) VALUES (?, ?)",
+                   (request.form.get("username"), generate_password_hash(request.form.get("password"))))
+        db.commit()
 
         # Query database for username
-        rows = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username")).fetchall()
-
-        db.close()
+        dbcursor.execute("SELECT * FROM users WHERE username = ?", (request.form.get("username"),))
+        rows = dbcursor.fetchall()
 
         # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+        if len(rows) != 1 or not check_password_hash(rows[0][2], request.form.get("password")):
             return apology("invalid username and/or password", 403)
 
         # Remember which user has logged in
-        session["user_id"] = rows[0]["id"]
+        session["user_id"] = rows[0][0]
 
         # Redirect user to home page
         return redirect("/")
