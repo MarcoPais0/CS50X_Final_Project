@@ -1,17 +1,12 @@
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import apology, login_required
+from helpers import login_required
 import sqlite3
 
 # Configure application
 app = Flask(__name__)
-
-# Ensure templates are auto-reloaded
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Ensure responses aren't cached
 @app.after_request
@@ -37,7 +32,7 @@ with open('schema.sql') as f:
 @app.route("/")
 @login_required
 def index():
-    """Show portfolio of stocks"""
+    """"""
 
     return render_template("index.html")
 
@@ -54,11 +49,13 @@ def login():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return apology("must provide username", 403)
+            flash("Must provide username!")
+            return render_template("login.html")
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return apology("must provide password", 403)
+            flash("Must provide password!")
+            return render_template("login.html")
 
         # Query database for username
         dbcursor.execute("SELECT * FROM users WHERE username = ?", (request.form.get("username"),))
@@ -66,7 +63,8 @@ def login():
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0][2], request.form.get("password")):
-            return apology("invalid username and/or password", 403)
+            flash("Invalid username and/or password!")
+            return render_template("login.html")
 
         # Remember which user has logged in
         session["user_id"] = rows[0][0]
@@ -102,18 +100,22 @@ def register():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return apology("must provide username", 400)
+            flash("Must provide username!")
+            return render_template("register.html")
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return apology("must provide password", 400)
+            flash("Must provide password!")
+            return render_template("register.html")
 
         # Ensure password was submitted
         elif not request.form.get("confirmation"):
-            return apology("must provide password confirmation", 400)
+            flash("Must provide password confirmation!")
+            return render_template("register.html")
 
         elif request.form.get("password") != request.form.get("confirmation"):
-            return apology("password and confirmation must be equal", 400)
+            flash("Password and confirmation must be equal!")
+            return render_template("register.html")
 
         # Query database for username
         dbcursor.execute("SELECT * FROM users WHERE username = ?", (request.form.get("username"),))
@@ -121,7 +123,8 @@ def register():
 
         # Ensure username doesn't exist
         if len(rows) != 0:
-            return apology("username already exists", 400)
+            flash("Username already exists!")
+            return render_template("register.html")
 
         dbcursor.execute("INSERT INTO users (username, hash) VALUES (?, ?)",
                    (request.form.get("username"), generate_password_hash(request.form.get("password"))))
@@ -133,7 +136,8 @@ def register():
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0][2], request.form.get("password")):
-            return apology("invalid username and/or password", 403)
+            flash("Invalid username and/or password!")
+            return render_template("register.html")
 
         # Remember which user has logged in
         session["user_id"] = rows[0][0]
