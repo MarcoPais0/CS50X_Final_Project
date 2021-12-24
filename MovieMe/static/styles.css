@@ -1,13 +1,21 @@
-nav .navbar-brand
-{
-    /* size for brand */
-    font-size: xx-large;
+body {
+    background-color: #e2dddf;
 }
 
-/* Colors for brand */
-nav .navbar-brand .black
+nav {
+    background-color: #000;
+}
+
+.colorbrand
 {
-    color: #000000;
+    font-size: xx-large;
+    color: #ff124f;
+}
+
+.colorlink
+{
+    font-size: large;
+    color: #85ebd9;
 }
 
 main .form-control
@@ -41,4 +49,9 @@ th {
     padding-top: 10px;
     padding-bottom: 10px;
     color: #4deeea;
+}
+
+.lr {
+    margin-top: 50px;
+    text-align: center;
 }
