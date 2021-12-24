@@ -23,27 +23,22 @@ main
 {
     /* Scroll horizontally as needed */
     overflow-x: auto;
-
-    /* Center contents */
-    text-align: center;
-}
-
-main img
-{
-    /* Constrain images on small screens */
-    max-width: 100%;
 }
 
 table {
-    background-color: transparent;
-    margin-bottom: 1rem;
-    width: 100%;
+    margin-top: 50px;
+    margin-left: 75%;
+    width: 20%;
+    text-align: center;
 }
 
-table tr {
-    border-bottom: 1px solid black;
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-table tr:last-child {
-    border-bottom: 2px solid black;
+th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #4deeea;
 }

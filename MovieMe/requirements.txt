@@ -2,3 +2,4 @@ flask
 flask_session
 requests
 sqlite3
+imdbpy
