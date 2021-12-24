@@ -22,7 +22,7 @@
 
     <body>
         <nav class="navbar navbar-expand-md navbar-light">
-            <a class="navbar-brand" href="/"><span class="colorbrand">MovieMe</a>
+            <a class="navbar-brand" href="/"><button class="btn"><span class="btn__contentr">MovieMe</span></button></a>
             <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,8 +35,8 @@
                     </ul>
                 {% else %}
                     <ul class="navbar-nav ml-auto mt-2">
-                        <li class="nav-item"><a class="nav-link navbar-title" href="/register"><span class="colorlink">Register</a></li>
-                        <li class="nav-item"><a class="nav-link navbar-title" href="/login"><span class="colorlink">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link navbar-title" href="/register"><button class="btn"><span class="btn__contenty">Register</span></button></a></li>
+                        <li class="nav-item"><a class="nav-link navbar-title" href="/login"><button class="btn"><span class="btn__contenty">Log In</span></button></a></li>
                     </ul>
                 {% endif %}
             </div>
@@ -53,6 +53,5 @@
         <main>
         {% block main %}{% endblock %}
         </main>
-
     </body>
 </html>
