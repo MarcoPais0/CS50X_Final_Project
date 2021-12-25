@@ -39,7 +39,7 @@ ia = IMDb()
 @app.route("/")
 @login_required
 def index():
-    """"""
+    """Shows the homepage"""
     M = ia.get_popular100_movies()
     M = M[0:10]
 

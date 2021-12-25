@@ -1,3 +1,4 @@
+/* background */
 body {
     background-image: url('cyberpunk.jpg');
     background-repeat: no-repeat;
@@ -6,21 +7,15 @@ body {
 }
 
 nav {
-    background-color: #050a0e;
+    background-color: var(--black-color);
 }
 
-main .form-control
-{
-    /* Center form controls */
+main .form-control {
     display: inline-block;
-
-    /* Override Bootstrap's 100% width for form controls */
     width: auto;
 }
 
-main
-{
-    /* Scroll horizontally as needed */
+main {
     overflow-x: auto;
 }
 
@@ -29,21 +24,26 @@ table {
     margin-left: 75%;
     width: 20%;
     text-align: center;
+    background-color: var(--black-color);
 }
 
 td {
+    padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    color: var(--yellow-color);
 }
 
 th {
+    padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #4deeea;
+    color: var(--red-color);
 }
 
-.lr {
-    margin-top: 50px;
+/* blank space before text box */
+.logreg {
+    margin-top: 75px;
     text-align: center;
 }
 
@@ -55,6 +55,7 @@ th {
   --red-color: #ff003c;
   --black-color: #050a0e;
   --blue-color: #00f0ff;
+  --white-color: #ffffff;
 }
 
 .btn {
@@ -62,16 +63,16 @@ th {
   height: 55px; 
   border: none;
   outline: none;
-  background-color: var(--black-color);
+  background-color: var(--white-color);
   cursor: pointer;
   position: relative;
   font-family: Tomorrow, sans-serif;
   font-size: medium;
-  color: var(--black-color);
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
 
 .btn__contenty {
+  color: var(--red-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +82,7 @@ th {
   right: 2px;
   bottom: 2px;
   background-color: var(--yellow-color);
+  color: var(--black-color);
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
 

@@ -29,14 +29,15 @@
             <div class="collapse navbar-collapse" id="navbar">
                 {% if session.user_id %}
                     <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/search"><button class="btn"><span class="btn__contentb">Search</span></button></a></li>
                     </ul>
                     <ul class="navbar-nav ml-auto mt-2">
-                        <li class="nav-item"><a class="nav-link" href="/logout"><span class="colorlink">Log Out</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout"><button class="btn"><span class="btn__contentb">Log Out</span></button></a></li>
                     </ul>
                 {% else %}
                     <ul class="navbar-nav ml-auto mt-2">
-                        <li class="nav-item"><a class="nav-link navbar-title" href="/register"><button class="btn"><span class="btn__contenty">Register</span></button></a></li>
-                        <li class="nav-item"><a class="nav-link navbar-title" href="/login"><button class="btn"><span class="btn__contenty">Log In</span></button></a></li>
+                        <li class="nav-item"><a class="nav-link navbar-title" href="/register"><button class="btn"><span class="btn__contentb">Register</span></button></a></li>
+                        <li class="nav-item"><a class="nav-link navbar-title" href="/login"><button class="btn"><span class="btn__contentb">Log In</span></button></a></li>
                     </ul>
                 {% endif %}
             </div>
