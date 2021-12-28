@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Trending
+{% endblock %}
+
+{% block main %}
+    <table class="table-borderless">
+        <thead>
+            <tr>
+                <th><h4>#</h5></th>
+                <th><h4>Trending Movies</h5></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(10) %}
+            <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{movies[i] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -21,10 +21,11 @@ main {
 
 table {
     margin-top: 50px;
-    margin-left: 75%;
+    align-content: center;
     width: 20%;
-    text-align: center;
+    margin-left: 40%;
     background-color: var(--black-color);
+    opacity: 0.9;
 }
 
 td {
@@ -32,6 +33,13 @@ td {
     padding-top: 10px;
     padding-bottom: 10px;
     color: var(--yellow-color);
+}
+
+td:first-child {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: var(--blue-color);
 }
 
 th {
@@ -72,6 +80,42 @@ th {
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
 
+.btn1 {
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.5s;
+  border-radius: 25px;
+  border: 3px solid var(--red-color);
+  background-color: var(--black-color);
+  color: var(--yellow-color);
+  opacity: 0.75;
+  font-family: Tomorrow, sans-serif;
+  font-size: xx-large;
+}
+
+.btn1:hover {
+  border: 5px solid var(--blue-color);
+  opacity: 0.95;
+  padding-right: 25px;
+}
+
+.btn1:after {
+  content: '\00bb';
+  opacity: 0;
+  top: 0;
+  right: -20px;
+}
+
+.btn1:hover:after {
+  opacity: 0.95;
+  right: 0;
+}
+
+a:link, a:visited, a:hover {
+  text-decoration: none;
+  color: var(--yellow-color);
+}
+
 .btn__contenty {
   display: flex;
   align-items: center;
@@ -97,9 +141,9 @@ th {
     bottom: 2px;
     background-color: var(--red-color);
     clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
-  }
+}
 
-  .btn__contentb {
+.btn__contentb {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,4 +154,31 @@ th {
     bottom: 2px;
     background-color: var(--blue-color);
     clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
-  }
+}
+
+.container {
+  margin-top: 50px;
+  display: flex;
+  height: 500px;
+  min-width: 100%;
+  justify-content: space-evenly;
+}
+
+.column {
+  width: 20%;
+  box-sizing: border-box;
+}
+
+.column-one {
+  order: 1;
+}
+.column-two {
+  order: 2;
+}
+.column-three {
+  order: 3;
+}
+.column-four {
+  order: 4;
+}
+

@@ -40,10 +40,8 @@ ia = IMDb()
 @login_required
 def index():
     """Shows the homepage"""
-    M = ia.get_popular100_movies()
-    M = M[0:10]
 
-    return render_template("index.html", movies = M)
+    return render_template("index.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -157,3 +155,13 @@ def register():
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("register.html")
+
+@app.route("/trending")
+@login_required
+def trending():
+    """Shows trending shows"""
+
+    M = ia.get_popular100_movies()
+    M = M[0:10]
+
+    return render_template("trending.html", movies = M)

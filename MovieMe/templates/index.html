@@ -5,20 +5,10 @@
 {% endblock %}
 
 {% block main %}
-    <table class="table-borderless table-hover">
-        <thead>
-            <tr>
-                <th><h4>#</h5></th>
-                <th><h4>Trending Movies</h5></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in range(10) %}
-            <tr>
-                <td>{{ i+1 }}</td>
-                <td>{{movies[i] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <button class="column column-one btn1"><a href="/">Search Movie </a></button>
+        <button class="column column-two btn1"><a href="/">Search Actor </a></button>
+        <button class="column column-three btn1"><a href="/trending">Trending </a></button>
+        <button class="column column-four btn1"><a href="/">Favorites </a></button>
+    </div>
 {% endblock %}
