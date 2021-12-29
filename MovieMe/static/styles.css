@@ -21,6 +21,7 @@ main {
 
 table {
   margin-top: 50px;
+  margin-bottom: 50px;
   align-content: center;
   text-align: center;
   width: 40%;
@@ -172,12 +173,15 @@ a:link, a:visited, a:hover {
 .column-one {
   order: 1;
 }
+
 .column-two {
   order: 2;
 }
+
 .column-three {
   order: 3;
 }
+
 .column-four {
   order: 4;
 }
