@@ -35,6 +35,7 @@ with open('schema.sql') as f:
 # Create an instance of the IMDb class
 ia = IMDb()
 
+lname = ""
 
 @app.route("/")
 @login_required
@@ -156,15 +157,33 @@ def register():
     else:
         return render_template("register.html")
 
-@app.route("/trending")
+@app.route("/trending", methods=["GET", "POST"])
 @login_required
 def trending():
     """Shows trending shows"""
 
-    M = ia.get_popular100_movies()
-    M = M[0:10]
+    if request.method == "POST":
+        M = ia.get_popular100_movies()
+        M = M[0:10]
+        if not request.form.get("id"):
+            return render_template("trending.html", movies = M)
 
-    return render_template("trending.html", movies = M)
+        dbcursor.execute("SELECT * FROM fav WHERE userid = ? and movieid = ?", (session["user_id"], request.form.get("id"),))
+        rows = dbcursor.fetchall()
+
+        if len(rows) != 0:
+            flash("Already added!")
+            return render_template("trending.html", movies = M)
+
+        dbcursor.execute("INSERT INTO fav (movieid, userid) VALUES (?, ?)",
+                   (request.form.get("id"), session["user_id"],))
+        db.commit()
+        return render_template("trending.html", movies = M)
+
+    else:
+        M = ia.get_popular100_movies()
+        M = M[0:10]
+        return render_template("trending.html", movies = M)
 
 
 @app.route("/smovie", methods=["GET", "POST"])
@@ -173,7 +192,7 @@ def smovie():
     """Searches for movies"""
 
     if request.method == "POST":
-        if not request.form.get("name"):
+        if request.form.get("name") != lname:
             flash("Must provide name!")
             return render_template("s.html")
 
