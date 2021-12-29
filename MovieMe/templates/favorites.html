@@ -8,12 +8,16 @@
     <table class="table-borderless">
         <thead>
             <tr>
+                <th><h3>Remove</h3></th>
                 <th><h3>Favorites</h3></th>
             </tr>
         </thead>
         <tbody>
             {% for movie in movies %}
             <tr>
+                <form method="POST">
+                    <td><button class="btn2" value="{{ movie.movieID }}" name="id"><span class="btn__contentb">-</span></button></td>
+                </form>
                 <td>{{ movie }}</td>
             </tr>
             {% endfor %}
