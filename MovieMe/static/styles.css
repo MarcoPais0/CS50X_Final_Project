@@ -73,42 +73,11 @@ th {
   font-family: Tomorrow, sans-serif;
   font-size: medium;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
-}
-
-.btn1 {
-  cursor: pointer;
-  display: inline-block;
   transition: all 0.5s;
-  border-radius: 25px;
-  border: 3px solid var(--red-color);
+}
+
+.btn:hover {
   background-color: var(--black-color);
-  color: var(--yellow-color);
-  opacity: 0.75;
-  font-family: Tomorrow, sans-serif;
-  font-size: xx-large;
-}
-
-.btn1:hover {
-  border: 5px solid var(--blue-color);
-  opacity: 0.95;
-  padding-right: 25px;
-}
-
-.btn1:after {
-  content: '\00bb';
-  opacity: 0;
-  top: 0;
-  right: -20px;
-}
-
-.btn1:hover:after {
-  opacity: 0.95;
-  right: 0;
-}
-
-a:link, a:visited, a:hover {
-  text-decoration: none;
-  color: var(--yellow-color);
 }
 
 .btn__contenty {
@@ -149,6 +118,42 @@ a:link, a:visited, a:hover {
     bottom: 2px;
     background-color: var(--blue-color);
     clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+}
+
+.btn1 {
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.5s;
+  border-radius: 25px;
+  border: 3px solid var(--red-color);
+  background-color: var(--black-color);
+  color: var(--yellow-color);
+  opacity: 0.75;
+  font-family: Tomorrow, sans-serif;
+  font-size: xx-large;
+}
+
+.btn1:hover {
+  border: 5px solid var(--blue-color);
+  opacity: 0.95;
+  padding-right: 25px;
+}
+
+.btn1:after {
+  content: '\00bb';
+  opacity: 0;
+  top: 0;
+  right: -20px;
+}
+
+.btn1:hover:after {
+  opacity: 0.95;
+  right: 0;
+}
+
+a:link, a:visited, a:hover {
+  text-decoration: none;
+  color: var(--yellow-color);
 }
 
 .container {
