@@ -218,7 +218,7 @@ def smovie():
 
             if len(rows) != 0:
                 flash("Already added!")
-                return render_template("trending.html", movies = MOVIES)
+                return render_template("smovie.html", movies = MOVIES)
 
             dbcursor.execute("INSERT INTO fav (movieid, userid) VALUES (?, ?)",
                     (request.form.get("id"), session["user_id"],))
