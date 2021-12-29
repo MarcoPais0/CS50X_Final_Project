@@ -25,7 +25,7 @@ def after_request(response):
     return response
 
 # Configure database
-db = sqlite3.connect('downloadme.db', check_same_thread=False)
+db = sqlite3.connect('movieme.db', check_same_thread=False)
 dbcursor = db.cursor()
 
 # Initialize database
