@@ -24,10 +24,17 @@ The **movieme.db** is the sqlite database.
 In the **static** folder is the background of the site (**cyberpunk.jpg**) and the CSS file (**styles.css**) with all the WebApp's styes.
 #### templates:
 The **templates** folder has all the HTML files.
+  
 All the other HTML files complete the **layout.html** file.
+  
 **login.html** and **register.html** present text boxes for the user's inputs.
+  
 **favorites.html** shows a table with all the user's favorites and a button in each row to remove it.
+  
 **index.html** shows four big buttons that represent all the functionalities of the WebApp. When clicked the user is redirected to the correspondent link.
+  
 **s.html** presents a text box for the user input (actor or movie name).
+  
 **sactor.html** and **smovie.html** both show a table and an input text box with one difference, in the **sactor.html** page there is an option in every row to add the movie to the favorites.
+  
 **trending.html** shows the top 20 movies of the moment with te option to add them to the favorites.
