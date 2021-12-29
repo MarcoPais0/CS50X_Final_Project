@@ -157,6 +157,7 @@ def register():
     else:
         return render_template("register.html")
 
+
 @app.route("/trending", methods=["GET", "POST"])
 @login_required
 def trending():
@@ -164,7 +165,7 @@ def trending():
 
     if request.method == "POST":
         M = ia.get_popular100_movies()
-        M = M[0:10]
+        M = M[0:20]
         if not request.form.get("id"):
             return render_template("trending.html", movies = M)
 
@@ -178,11 +179,12 @@ def trending():
         dbcursor.execute("INSERT INTO fav (movieid, userid) VALUES (?, ?)",
                    (request.form.get("id"), session["user_id"],))
         db.commit()
+        flash("Movie added!")
         return render_template("trending.html", movies = M)
 
     else:
         M = ia.get_popular100_movies()
-        M = M[0:10]
+        M = M[0:20]
         return render_template("trending.html", movies = M)
 
 
@@ -192,7 +194,7 @@ def smovie():
     """Searches for movies"""
 
     if request.method == "POST":
-        if request.form.get("name") != lname:
+        if not request.form.get("name"):
             flash("Must provide name!")
             return render_template("s.html")
 
@@ -218,3 +220,22 @@ def sactor():
 
     else:
         return render_template("s.html")
+
+
+@app.route("/favorites")
+@login_required
+def favorites():
+    """ Shows favorite movies """
+
+    dbcursor.execute("SELECT * FROM fav WHERE userid = ?", (session["user_id"],))
+    rows = dbcursor.fetchall()
+
+    if len(rows) == 0:
+        flash("No favorites!")
+        return redirect("/")
+    
+    MOVIES = []
+    for id in rows:
+        MOVIES.append(ia.get_movie(id[0]))
+
+    return render_template("favorites.html", movies=MOVIES)
