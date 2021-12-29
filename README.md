@@ -9,16 +9,25 @@ They can also see the trending movies of the moment and **add or remove** movies
 ## Files:
 #### helpers.py, app.py:
 In **helpers.py** I only have the **login_required** function that I reused from CS50X **finance** problem from week 9.
+  
 In **app.py** is my main app. There I create a connection to IMDB's API and initialize the **sqlite** database by reading **squema.sql** and executing it's content, therefore creating the necessary tables.
+  
 I also create and configure the **flask** app.
+  
 Then I created the functions that handle all the routes.
+  
 For **/login**, **/logout** and **/register** the app either creates and stores a **session id** or clears it.
+  
 **/** shows the index page.
+  
 **/trending**, **/favorites**, **/smovie** and **/sactor** all show a table with the results or a text box.
+  
 All the functions have verifications preventing wrong or repeated inputs.
 #### schema.sql, requirements.txt, movieme.db:
 The **requirements.txt** file contains all the python libraries needed for the WebApp. They can be installed with the **pip install -r requirements.txt** command.
+  
 The **schema.sql** has all the SQL commands needed to initialize the sqlite database.
+  
 The **movieme.db** is the sqlite database.
 #### static:
 In the **static** folder is the background of the site (**cyberpunk.jpg**) and the CSS file (**styles.css**) with all the WebApp's styes.
