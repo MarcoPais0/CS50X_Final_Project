@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form method="post">
+        <div class="logreg">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="name" placeholder="Name" type="text">
+            </div>
+            <button class="btn"><span class="btn__contenty">Search</span></button>
+        </div>
+    </form>
+{% endblock %}

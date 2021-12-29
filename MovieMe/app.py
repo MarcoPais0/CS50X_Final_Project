@@ -165,3 +165,15 @@ def trending():
     M = M[0:10]
 
     return render_template("trending.html", movies = M)
+
+@app.route("/smovie", methods=["GET", "POST"])
+@login_required
+def smovie():
+    """Searches for movies"""
+
+    if request.method == "POST":
+        MOVIES = {}
+        return render_template("smovie.html", movies=MOVIES)
+
+    else:
+        return render_template("s.html")
