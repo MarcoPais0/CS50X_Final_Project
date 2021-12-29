@@ -166,14 +166,36 @@ def trending():
 
     return render_template("trending.html", movies = M)
 
+
 @app.route("/smovie", methods=["GET", "POST"])
 @login_required
 def smovie():
     """Searches for movies"""
 
     if request.method == "POST":
-        MOVIES = {}
+        if not request.form.get("name"):
+            flash("Must provide name!")
+            return render_template("s.html")
+
+        MOVIES = ia.search_movie(request.form.get("name"))
         return render_template("smovie.html", movies=MOVIES)
+
+    else:
+        return render_template("s.html")
+
+
+@app.route("/sactor", methods=["GET", "POST"])
+@login_required
+def sactor():
+    """Searches for actors"""
+
+    if request.method == "POST":
+        if not request.form.get("name"):
+            flash("Must provide name!")
+            return render_template("s.html")
+
+        ACTORS = ia.search_person(request.form.get("name"))
+        return render_template("sactor.html", actors=ACTORS)
 
     else:
         return render_template("s.html")
