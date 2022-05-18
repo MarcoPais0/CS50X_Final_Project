@@ -13,11 +13,9 @@ They can also see the trending movies of the moment and **add or remove** movies
 
 #### helpers.py, app.py:
 
-In **helpers.py** I only have the **login_required** function that I reused from CS50X **finance** problem from week 9.
+In __**helpers.py**__ I only have the **login_required** function that I reused from CS50X **finance** problem from week 9.
 
-In **app.py** is my main app. There I create a connection to IMDB's API and initialize the **sqlite** database by reading **squema.sql** and executing it's content, therefore creating the necessary tables.
-
-I also create and configure the **flask** app.
+In **app.py** is my main app. There I create a connection to IMDB's API and initialize the **sqlite** database by reading **squema.sql** and executing its content, therefore creating the necessary tables. I also create and configure the **flask** app.
 
 Then I created the functions that handle all the routes.
   - **/login** checks if all the inputs were given and then queries the database to see if the user exists, if not there is a flash alert and the page is reloaded.
