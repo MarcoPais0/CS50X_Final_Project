@@ -10,10 +10,8 @@ In this project I developed a **WebApp** using **Flask** that allows users to **
 They can also see the trending movies of the moment and **add or remove** movies from their **favorites list**.
 
 ## Files:
-
 ### helpers.py, app.py:
-
-In __helpers.py__ I only have the **login_required** function that I reused from CS50X **finance** problem from week 9.
+In **helpers.py** I only have the **login_required** function that I reused from CS50X **finance** problem from week 9.
 
 In **app.py** is my main app. There I create a connection to IMDB's API and initialize the **sqlite** database by reading **squema.sql** and executing its content, therefore creating the necessary tables. I also create and configure the **flask** app.
 
@@ -30,21 +28,24 @@ Then I created the functions that handle all the routes.
 All the functions have verifications preventing wrong or repeated inputs.
 
 ### schema.sql, requirements.txt, movieme.db:
-
 - The **requirements.txt** file contains all the python libraries needed for the WebApp. They can be installed with the **pip install -r requirements.txt** command.
 
 - The **schema.sql** has all the SQL commands needed to initialize the sqlite database.
 
 - The **movieme.db** is the sqlite database.
-- 
+
 ### static:
 In the **static** folder is the background of the site (**cyberpunk.jpg**) and the CSS file (**styles.css**) with all the WebApp's styes.
-In **styles.css** I create the styles for all the elements in my WebApp.
-For the tables I made them slightly transparent to be able to slightly see the background image and made a blue line at the end of each row for aesthetics.
-For the cyberpunk buttons I inspired myself in a post online (link in the code) where I used the clip atribute to create the appearence of those cyberpunk buttons.
-The text boxes are pretty much default because I didn't think it would be better to change them.
-### templates:
 
+In **styles.css** I create the styles for all the elements in my WebApp.
+
+For the tables I made them slightly transparent to be able to slightly see the background image and made a blue line at the end of each row for aesthetics.
+
+For the cyberpunk buttons I inspired myself in a post online (link in the code) where I used the clip atribute to create the appearence of those cyberpunk buttons.
+
+The text boxes are pretty much default because I didn't think it would be better to change them.
+
+### templates:
 The **templates** folder has all the HTML files.
 
 All the other HTML files complete the **layout.html** file.
