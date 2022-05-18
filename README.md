@@ -29,7 +29,7 @@ Then I created the functions that handle all the routes.
 
 All the functions have verifications preventing wrong or repeated inputs.
 
-###schema.sql, requirements.txt, movieme.db:
+### schema.sql, requirements.txt, movieme.db:
 
 - The **requirements.txt** file contains all the python libraries needed for the WebApp. They can be installed with the **pip install -r requirements.txt** command.
 
