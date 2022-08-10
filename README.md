@@ -3,7 +3,7 @@
 ## Description:
 Hi!
 
-I'm a student from Coimbra, Portugal and I developed this project for the [https://cs50.harvard.edu/x/2021/](CS50x) online course.
+I'm a student from Coimbra, Portugal and I developed this project for the [CS50x](https://cs50.harvard.edu/x/2021/) online course.
 
 In this project I developed a **WebApp** using **Flask** that allows users to **search movies and actors** by name using **IMDB's API**.
 
